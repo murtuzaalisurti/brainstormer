@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scheduler</title>
+    <title>Brainstormer</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/9fa61c79aa.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div class="heading-container">
-        <h1 class="heading">Scheduler</h1>
-        <input type="search" placeholder="search" id="searchbox">
-    </div>
 
-    <section class="list_heading_container">
-        <div class="list_header">List</div>
+<body>
+    <section class="header_container">
+        <div class="heading-container">
+            <h1 class="heading">Brainstormer</h1>
+            <h4 class="subtitle">throw up ideas</h4>
+        </div>
+        <div id="clock_digital">
+            <div class="full_date">
+                <div class="day_and_date"></div>
+                <div class="year"></div>
+            </div>
+            <div class="full_time"></div>
+        </div>
     </section>
+
+    <div class="search_container">
+        <input placeholder="Search" id="searchbox">
+        <button class="search_button"><i class="fas fa-search"></i></button>
+        <!--<i class="fas fa-times"></i>-->
+    </div>
 
     <section>
         <form id="form">
-            <input placeholder="add an item" id="new" type="text" autocomplete="off">
-            <input type="submit" id="item_submit">
+            <input placeholder="Ideas end up here.." id="new" type="text" autocomplete="off">
+            <!-- <input type="submit" id="item_submit"> -->
+            <button id="item_submit">Add</button>
         </form>
     </section>
 
@@ -34,4 +49,5 @@
     </section>
     <script src="./js/app.js"></script>
 </body>
+
 </html>
