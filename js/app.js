@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchbox = document.querySelector("#searchbox");
     const search_clear_button = document.querySelector(".search_button");
     const search_icon = document.querySelector(".search_button i");
-    let clock = document.querySelector("#clock_digital");
+    // let clock = document.querySelector("#clock_digital");
     let day_and_date_long = document.querySelector(".day_and_date");
     let year_long = document.querySelector(".year");
     let time_long = document.querySelector(".full_time");
@@ -107,6 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
     search_clear_button.onclick = clear_search_input;
     searchbox.addEventListener("keyup", filter_item);
 
+    function timestamp(){}
+
     // clock
     function display_clock() {
         let time = new Date();
@@ -114,9 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let hour = time.getHours();
         let minutes = time.getMinutes();
         let sec = time.getSeconds();
-        let anti_post_meridian = "";
+        let anti_post_meridian = "am";
 
-        if(hour > 12){
+        if(hour > 12 && hour < 24){
             hour = hour - 12;
             anti_post_meridian = "pm";
         }
@@ -132,12 +134,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         let date = time.toLocaleString('default', { day: '2-digit' });
+        let date_suffix = "th";
+        if(date == 1){
+            date_suffix = "st";
+        }
+        if(date == 2){
+            date_suffix = "nd";
+        }
+        if(date == 3){
+            date_suffix = "rd";
+        }
+
         let day = time.toLocaleString('default', { weekday: 'long' });
 
         let month = time.toLocaleString('default', { month: 'long' });
         let year = time.toLocaleString('default', { year: '2-digit' });
 
-        day_and_date_long.innerHTML = `${day}, ${date} ${month}`;
+        day_and_date_long.innerHTML = `${day}, ${date}<sup>${date_suffix}</sup>&nbsp${month}`;
         year_long.innerHTML = `&nbsp20${year}`;
         time_long.innerHTML = `${hour} : ${minutes} : <span style="font-size: 1rem">${sec}</span>&nbsp <span style="font-size: 1.3rem">${anti_post_meridian}</span>`;
     }
