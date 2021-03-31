@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchbox = document.querySelector("#searchbox");
     const search_clear_button = document.querySelector(".search_button");
     const search_icon = document.querySelector(".search_button i");
-    // let clock = document.querySelector("#clock_digital");
     let day_and_date_long = document.querySelector(".day_and_date");
     let year_long = document.querySelector(".year");
     let time_long = document.querySelector(".full_time");
@@ -48,10 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (searchbox.value == "") {
             search_icon.className = "fas fa-search";
-            console.log(search_icon.className);
         } else {
             search_icon.className = "fas fa-times";
-            console.log(search_icon.className);
         }
 
         let converted_to_lower = e.target.value.toLowerCase();
@@ -68,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             array_of_blocked_items.push(String(item.classList.contains("none")));
         });
+
         const contains_none = [];
         const not_contains_none = [];
         for (let k = 0; k < array_of_blocked_items.length; k++) {
@@ -93,21 +91,18 @@ document.addEventListener("DOMContentLoaded", function () {
             items_2.forEach((item) => {
                 item.classList.remove("none");
             });
+            items_list.classList.remove("bg");
         }
     }
     if (searchbox.value == "") {
         search_icon.className = "fas fa-search";
-        console.log(search_icon.className);
     } else {
         search_icon.className = "fas fa-times";
-        console.log(search_icon.className);
     }
     submit_item.onsubmit = add_item;
     items_list.onclick = remove_item;
     search_clear_button.onclick = clear_search_input;
     searchbox.addEventListener("keyup", filter_item);
-
-    function timestamp(){}
 
     // clock
     function display_clock() {
@@ -118,35 +113,61 @@ document.addEventListener("DOMContentLoaded", function () {
         let sec = time.getSeconds();
         let anti_post_meridian = "am";
 
-        if(hour > 12 && hour < 24){
+        if (hour > 12 && hour < 24) {
             hour = hour - 12;
             anti_post_meridian = "pm";
         }
-        if(hour == 0){
+        if (hour == 0) {
             hour = 12 - hour;
             anti_post_meridian = "am";
         }
-        if(minutes < 10){
+        if (minutes < 10) {
             minutes = `0${minutes}`;
         }
-        if(sec < 10){
+        if (sec < 10) {
             sec = `0${sec}`;
         }
 
         let date = time.toLocaleString('default', { day: '2-digit' });
-        let date_suffix = "th";
-        if(date == 1){
-            date_suffix = "st";
+        let date_digit_array = date.split("");
+        let date_suffix = "";
+
+        if (date_digit_array[0] == 0) {
+            date_digit_array.shift();
+            if (date_digit_array[0] == 1) {
+                date_suffix = "st";
+            }
+            else if (date_digit_array[0] == 2) {
+                date_suffix = "nd";
+            }
+            else if (date_digit_array[0] == 3) {
+                date_suffix = "rd";
+            }
+            else {
+                date_suffix = "th";
+            }
         }
-        if(date == 2){
-            date_suffix = "nd";
-        }
-        if(date == 3){
-            date_suffix = "rd";
+        else {
+            if (date > 3 && date < 21) {
+                date_suffix = "th";
+            }
+            else {
+                if (date_digit_array[1] == 1) {
+                    date_suffix = "st";
+                }
+                else if (date_digit_array[1] == 2) {
+                    date_suffix = "nd";
+                }
+                else if (date_digit_array[1] == 3) {
+                    date_suffix = "rd";
+                }
+                else {
+                    date_suffix = "th";
+                }
+            }
         }
 
         let day = time.toLocaleString('default', { weekday: 'long' });
-
         let month = time.toLocaleString('default', { month: 'long' });
         let year = time.toLocaleString('default', { year: '2-digit' });
 
