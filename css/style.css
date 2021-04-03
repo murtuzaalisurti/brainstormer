@@ -216,6 +216,18 @@ li button{
 li button:hover{
     cursor: pointer;
 }
+.idea_text::before{
+    content: attr(data-idea);
+    position: absolute;
+    top: 0;
+    bottom: 70%;
+    right: 0;
+    left: 3.5%;
+    background-color: #ac9395;
+    background-color: transparent;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 13px;
+}
 .none{
     display: none;
 }
