@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             new_span_element.setAttribute("data-idea", `Created on ${day_create} ${date_create} at ${hour}:${minutes} ${anti_post_meridian}`);
             new_span_element.setAttribute("data-milisec", number_standard);
-            
+
 
             let timestamp_record;
             if (localStorage.getItem('timestamp_record') == null) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // timestamp_record.push(new_span_element.getAttribute("data-idea"));
             // timestamp_record.push(new_span_element.getAttribute("data-milisec"));
 
-            
+
             timestamp_record.push(new_span_element.getAttribute("data-milisec"));
             localStorage.setItem('timestamp_record', JSON.stringify(timestamp_record));
 
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         for (let j = 0; j < list_of_ideas.length; j++) {
-            
+
             if (list_of_ideas[j].firstChild.innerText != new_value) {
                 var fresh = true;
             } else {
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             new_span_element.setAttribute("data-idea", `Created on ${day_create} ${date_create} at ${hour}:${minutes} ${anti_post_meridian}`);
             new_span_element.setAttribute("data-milisec", number_standard);
-            
+
 
             let timestamp_record;
             if (localStorage.getItem('timestamp_record') == null) {
@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 items_list.classList.remove("bg");
             }
         }
+        check_no_of_ideas();
     }
     function remove_item(e) {
         if (e.target.classList.contains("delete")) {
@@ -192,7 +193,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 items_list.classList.remove("bg");
             }
         }
+        check_no_of_ideas();
     }
+
     function filter_item(e) {
 
         if (searchbox.value == "") {
@@ -268,13 +271,13 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let i = 0; i < timestamp_record.length; i++) {
                 if (index == i) {
                     let time_from_epoch = new Date(Number(timestamp_record[i]));
-                    
+
                     let day_create = time_from_epoch.toLocaleString('default', { weekday: 'short' });
                     let date_create = time_from_epoch.toLocaleString('default', { day: '2-digit' });
                     let hour = time_from_epoch.getHours();
                     let minutes = time_from_epoch.getMinutes();
                     let sec = time_from_epoch.getSeconds();
-                    
+
 
                     let anti_post_meridian = "am";
 
@@ -405,17 +408,47 @@ document.addEventListener("DOMContentLoaded", function () {
         year_long.innerHTML = `&nbsp20${year}`;
         time_long.innerHTML = `${hour} : ${minutes} : <span style="font-size: 1rem">${sec}</span>&nbsp <span style="font-size: 1.3rem">${anti_post_meridian}</span>`;
     }
+
+    function check_no_of_ideas() {
+        if (items_list.childNodes.length == 0) {
+            clear_storage_button.disabled = true;
+        } else {
+            clear_storage_button.disabled = false;
+        }
+    }
+    
+    clear_storage_button.addEventListener("click", () => {
+        // if (confirm('Are you sure you want to delete everything?')) {
+        //     localStorage.clear();
+        //     if (items_list.hasChildNodes) {
+        //         const ul_elements = items_list.childNodes.length;
+        //         for (let k = 0; k < ul_elements; k++) {
+        //             items_list.removeChild(items_list.firstChild);
+        //         }
+        //         items_list.classList.add("bg");
+        //     }
+        // }
+        document.querySelector(".modal").classList.remove("none");
+        document.querySelector(".modal").scrollIntoView();
+        document.querySelector(".modal-msg").textContent = "Are you sure you want to delete everything?";
+        document.querySelector(".yes").addEventListener("click", () => {
+            localStorage.clear();
+            if (items_list.hasChildNodes) {
+                const ul_elements = items_list.childNodes.length;
+                for (let k = 0; k < ul_elements; k++) {
+                    items_list.removeChild(items_list.firstChild);
+                }
+                items_list.classList.add("bg");
+            }
+            document.querySelector(".modal").classList.add("none");
+            check_no_of_ideas();
+        });
+        document.querySelector(".no").addEventListener("click", () => {
+            document.querySelector(".modal").classList.add("none");
+            check_no_of_ideas();
+        });
+    });
+    check_no_of_ideas();
     update_ui_from_storage();
     setInterval(display_clock, 1000);
-
-    clear_storage_button.addEventListener("click", () => {
-        localStorage.clear();
-        if(items_list.hasChildNodes) {
-            const ul_elements = items_list.childNodes.length;
-            for(let k = 0; k < ul_elements; k++) {
-                items_list.removeChild(items_list.firstChild);
-            }
-            items_list.classList.add("bg");
-        }
-    });
 });
