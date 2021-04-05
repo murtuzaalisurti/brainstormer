@@ -14,7 +14,68 @@ body{
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    position: relative;
     background-image: url(../assets/todobg2.jpg);
+}
+.modal{
+    display: flex;
+    justify-content: center;
+    justify-self: flex-start;
+    align-self: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #00000065;
+    z-index: 3;
+    backdrop-filter: blur(7px);
+}
+.modal-container{
+    width: 350px;
+    height: 180px;
+    background-color: #cacaca;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    z-index: 4;
+    font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.modal-msg{
+    height: 80px;
+    width: 85%;
+    color:rgb(12, 12, 12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+.yes-or-no{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 6;
+}
+.yes, .no{
+    background-color: transparent;
+    font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: 1.6px solid black;
+    margin-right: 20px;
+    padding: 8px 30px;
+    border-radius: 3px;
+    outline: invert;
+}
+.yes:hover, .no:hover{
+    background-color: black;
+    color: #f9f8f8;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
 }
 .header_container{
     display: flex;
@@ -131,7 +192,6 @@ body{
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #item_submit, .clear_storage{
-    /* background-color: #ffffffbc; */
     font-weight: bold;
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -157,6 +217,9 @@ body{
 .clear_storage{
     margin-left: 7px;
     background-color: #ffccd0bc;
+}
+.clear_storage:disabled{
+    pointer-events: none;
 }
 ul{
     list-style-type: none;
