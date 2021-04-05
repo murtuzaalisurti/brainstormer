@@ -89,7 +89,7 @@ body{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.search_button:hover, #item_submit:hover{
+.search_button:hover, #item_submit:hover, .clear_storage:hover{
     cursor: pointer;
 }
 .heading, .subtitle{
@@ -108,10 +108,10 @@ body{
     justify-content: center;
     align-items: center;
 }
-#form{
+#form, .clear_storage{
     margin-bottom: 10px;
 }
-#new, #item_submit{
+#new, #item_submit, .clear_storage{
     outline: none;
     padding: 10px 15px;
     border: none;
@@ -130,10 +130,33 @@ body{
     font-weight: normal;
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-#item_submit{
-    background-color: #ffffffbc;
+#item_submit, .clear_storage{
+    /* background-color: #ffffffbc; */
     font-weight: bold;
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#item_submit{
+    background-color: #d2ffccc5;
+}
+#item_submit:hover{
+    background-color: #0d7000c5;
+    color: #ffffff;
+    transition: all 0.3s ease-out;
+}
+.clear_storage:hover{
+    background-color: #ff3a4aca;
+    color: #ffffff;
+    transition: all 0.3s ease-out;
+}
+.add_and_clear{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+.clear_storage{
+    margin-left: 7px;
+    background-color: #ffccd0bc;
 }
 ul{
     list-style-type: none;
