@@ -327,15 +327,6 @@ document.addEventListener("DOMContentLoaded", function () {
             items_list.classList.remove("bg");
         }
     }
-    if (searchbox.value == "") {
-        search_icon.className = "fas fa-search";
-    } else {
-        search_icon.className = "fas fa-times";
-    }
-    submit_item.onsubmit = add_item;
-    items_list.onclick = remove_item;
-    search_clear_button.onclick = clear_search_input;
-    searchbox.addEventListener("keyup", filter_item);
 
     // clock
     function display_clock() {
@@ -416,6 +407,14 @@ document.addEventListener("DOMContentLoaded", function () {
             clear_storage_button.disabled = false;
         }
     }
+
+    function add_button() {
+        if(document.querySelector("#new").value == "") {
+            document.querySelector("#item_submit").disabled = true;
+        } else {
+            document.querySelector("#item_submit").disabled = false;
+        }
+    }
     
     clear_storage_button.addEventListener("click", () => {
         // if (confirm('Are you sure you want to delete everything?')) {
@@ -448,6 +447,15 @@ document.addEventListener("DOMContentLoaded", function () {
             check_no_of_ideas();
         });
     });
+
+    submit_item.onsubmit = add_item;
+    items_list.onclick = remove_item;
+    search_clear_button.onclick = clear_search_input;
+    searchbox.addEventListener("keyup", filter_item);
+    document.querySelector("#new").addEventListener("keyup", add_button);
+
+    document.querySelector("#item_submit").disabled = true;
+
     check_no_of_ideas();
     update_ui_from_storage();
     setInterval(display_clock, 1000);
