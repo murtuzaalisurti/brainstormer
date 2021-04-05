@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let day_and_date_long = document.querySelector(".day_and_date");
     let year_long = document.querySelector(".year");
     let time_long = document.querySelector(".full_time");
+    let clear_storage_button = document.querySelector(".clear_storage");
 
     function add_item(e) {
         e.preventDefault();
         let new_value = document.getElementById("new").value;
         let list_of_ideas = document.querySelectorAll(".list_items");
-        console.log(list_of_ideas.length);
         if (list_of_ideas.length == 0) {
             let li = document.createElement("li");
             li.className = "list_items";
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             new_span_element.setAttribute("data-idea", `Created on ${day_create} ${date_create} at ${hour}:${minutes} ${anti_post_meridian}`);
             new_span_element.setAttribute("data-milisec", number_standard);
-            console.log(new_span_element.getAttribute("data-milisec"));
+            
 
             let timestamp_record;
             if (localStorage.getItem('timestamp_record') == null) {
@@ -59,10 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // timestamp_record.push(new_span_element.getAttribute("data-idea"));
             // timestamp_record.push(new_span_element.getAttribute("data-milisec"));
 
-            // let full_stamp = `${new_span_element.getAttribute("data-idea")}${new_span_element.getAttribute("data-milisec")}`;
-            // timestamp_record.push(new_span_element.getAttribute("data-idea"));
+            
             timestamp_record.push(new_span_element.getAttribute("data-milisec"));
-            // timestamp_record.push(full_stamp);
             localStorage.setItem('timestamp_record', JSON.stringify(timestamp_record));
 
             new_span_element.appendChild(document.createTextNode(new_value));
@@ -84,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         for (let j = 0; j < list_of_ideas.length; j++) {
-            console.log(list_of_ideas.length);
+            
             if (list_of_ideas[j].firstChild.innerText != new_value) {
                 var fresh = true;
             } else {
@@ -128,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             new_span_element.setAttribute("data-idea", `Created on ${day_create} ${date_create} at ${hour}:${minutes} ${anti_post_meridian}`);
             new_span_element.setAttribute("data-milisec", number_standard);
-            console.log(new_span_element.getAttribute("data-milisec"));
+            
 
             let timestamp_record;
             if (localStorage.getItem('timestamp_record') == null) {
@@ -270,13 +268,13 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let i = 0; i < timestamp_record.length; i++) {
                 if (index == i) {
                     let time_from_epoch = new Date(Number(timestamp_record[i]));
-                    console.log(time_from_epoch);
+                    
                     let day_create = time_from_epoch.toLocaleString('default', { weekday: 'short' });
                     let date_create = time_from_epoch.toLocaleString('default', { day: '2-digit' });
                     let hour = time_from_epoch.getHours();
                     let minutes = time_from_epoch.getMinutes();
                     let sec = time_from_epoch.getSeconds();
-                    // let number_standard = time_from_epoch.getTime();
+                    
 
                     let anti_post_meridian = "am";
 
@@ -409,5 +407,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     update_ui_from_storage();
     setInterval(display_clock, 1000);
-    // localStorage.clear();
+
+    clear_storage_button.addEventListener("click", () => {
+        localStorage.clear();
+        if(items_list.hasChildNodes) {
+            const ul_elements = items_list.childNodes.length;
+            for(let k = 0; k < ul_elements; k++) {
+                items_list.removeChild(items_list.firstChild);
+            }
+            items_list.classList.add("bg");
+        }
+    });
 });
