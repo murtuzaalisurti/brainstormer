@@ -16,6 +16,8 @@ body{
     align-items: center;
     position: relative;
     background-image: url(../assets/todobg2.jpg);
+    background-size: cover;
+    overflow-x: hidden;
 }
 .modal{
     display: flex;
@@ -181,6 +183,9 @@ body{
     border-radius: 6px;
     box-shadow: 4px 4px 9px 0px rgba(0, 0, 0, 0.22);
 }
+#new{
+    width: 550px;
+}
 #new, #searchbox{
     color: rgb(12, 12, 12);
     font-weight: bold;
@@ -189,6 +194,7 @@ body{
 #new::placeholder{
     color: rgba(0, 0, 0, 0.822);
     font-weight: normal;
+    text-align: left;
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #item_submit, .clear_storage{
@@ -253,7 +259,7 @@ ul.bg::before{
     display: flex;
     flex-flow: row;
     justify-content: center;
-    width: 70vw;
+    width: 102vw;
     margin-bottom: 15vh;
 }
 
@@ -308,7 +314,7 @@ li button:hover{
     top: 0;
     bottom: 70%;
     right: 0;
-    left: 3.5%;
+    left: 2%;
     background-color: #ac9395;
     background-color: transparent;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
