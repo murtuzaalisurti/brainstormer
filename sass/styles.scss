@@ -11,10 +11,11 @@
     font-size: 62.5%;
 }
 body{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // flex-flow: column wrap;
+    // justify-content: center;
+    // align-items: center;
+    height: 100%;
     position: relative;
     // background-image: url(../assets/todobg2.jpg);
 }
@@ -81,7 +82,7 @@ body{
 .header_container{
     display: flex;
     flex-flow: row;
-    width: 80vw;
+    width: 85vw;
     justify-content: space-between;
     align-items: center;
     margin: 20px 0px 30px 0px;
@@ -101,13 +102,13 @@ body{
     justify-content: center;
     align-items: center;
     color: #f9f8f8;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .year{
-    font-size: 1rem;
-    padding-top: 2%;
+    font-size: 2rem;
+    // padding-top: 2%;
 }
 .full_time{
     color: #ffffff;
@@ -156,12 +157,12 @@ body{
 }
 .heading, .subtitle{
     color: var(--whitishcolor);
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .subtitle{
     color: #EEE0CB;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .list_heading_container{
@@ -316,7 +317,7 @@ li button:hover{
     font-size: 13px;
 }
 
-.bg{
+.backg{
     background-image: url(../assets/day.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -326,6 +327,20 @@ li button:hover{
 }
 .first-view{
     position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.day-night-logo{
+    color: white;
+    font-size: 3rem;
+}
+.time-date-task{
+    margin-top: 10rem;
+}
+.full_time{
+    font-size: 8rem;
+    font-family: 'Montserrat', sans-serif;
 }
 .none{
     display: none;

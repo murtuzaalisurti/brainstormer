@@ -335,15 +335,22 @@ document.addEventListener("DOMContentLoaded", function () {
         let hour = time.getHours();
         let minutes = time.getMinutes();
         let sec = time.getSeconds();
-        let anti_post_meridian = "am";
+        let anti_post_meridian = "AM";
 
-        if (hour > 12 && hour < 24) {
-            hour = hour - 12;
-            anti_post_meridian = "pm";
+        if (hour >= 12 && hour < 24) {
+            if(hour == 12){
+                hour = 12;
+                anti_post_meridian = "PM";
+            } else{
+                hour = hour - 12;
+                console.log(hour);
+                anti_post_meridian = "PM";
+            }
         }
-        if (hour == 0) {
+        else if (hour == 0) {
             hour = 12 - hour;
-            anti_post_meridian = "am";
+            console.log(hour);
+            anti_post_meridian = "AM";
         }
         if (minutes < 10) {
             minutes = `0${minutes}`;
@@ -391,13 +398,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        let day = time.toLocaleString('default', { weekday: 'long' });
+        let day = time.toLocaleString('default', { weekday: "short" });
         let month = time.toLocaleString('default', { month: 'long' });
         let year = time.toLocaleString('default', { year: '2-digit' });
 
         day_and_date_long.innerHTML = `${day}, ${date}<sup>${date_suffix}</sup>&nbsp${month}`;
         year_long.innerHTML = `&nbsp20${year}`;
-        time_long.innerHTML = `${hour} : ${minutes} : <span style="font-size: 1rem">${sec}</span>&nbsp <span style="font-size: 1.3rem">${anti_post_meridian}</span>`;
+
+        time_long.innerHTML = `${hour} : ${minutes}&nbsp <span style="font-size: 8rem">${anti_post_meridian}</span>`;
+
+        // time_long.innerHTML = `${hour} : ${minutes} : <span style="font-size: 8rem">${sec}</span>&nbsp <span style="font-size: 8rem">${anti_post_meridian}</span>`;
     }
 
     function check_no_of_ideas() {

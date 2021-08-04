@@ -14,19 +14,7 @@
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  height: 100%;
   position: relative;
 }
 
@@ -136,7 +124,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row;
           flex-flow: row;
-  width: 80vw;
+  width: 85vw;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -183,14 +171,13 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: #f9f8f8;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .year {
-  font-size: 1rem;
-  padding-top: 2%;
+  font-size: 2rem;
 }
 
 .full_time {
@@ -288,13 +275,13 @@ body {
 
 .heading, .subtitle {
   color: var(--whitishcolor);
-  font-size: 2rem;
+  font-size: 3rem;
   font-family: 'Montserrat','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .subtitle {
   color: #EEE0CB;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -531,7 +518,7 @@ li button:hover {
   font-size: 13px;
 }
 
-.bg {
+.backg {
   background-image: url(../assets/day.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -542,6 +529,24 @@ li button:hover {
 
 .first-view {
   position: absolute;
+  top: 2rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.day-night-logo {
+  color: white;
+  font-size: 3rem;
+}
+
+.time-date-task {
+  margin-top: 10rem;
+}
+
+.full_time {
+  font-size: 8rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .none {
