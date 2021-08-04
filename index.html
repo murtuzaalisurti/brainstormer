@@ -6,55 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brainstormer</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./sass/styles.css">
     <script src="https://kit.fontawesome.com/9fa61c79aa.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <section class="header_container">
-        <div class="heading-container">
-            <h1 class="heading">Brainstormer</h1>
-            <h4 class="subtitle">throw up ideas</h4>
-        </div>
-        <div id="clock_digital">
-            <div class="full_date">
-                <div class="day_and_date"></div>
-                <div class="year"></div>
+    <div class="bg" role="img"></div>
+    <div class="first-view"></div>
+    <div class="second-view none">
+        <section class="header_container">
+            <div class="heading-container">
+                <h1 class="heading">Brainstormer</h1>
+                <h4 class="subtitle">throw up ideas</h4>
             </div>
-            <div class="full_time"></div>
+            <div id="clock_digital">
+                <div class="full_date">
+                    <div class="day_and_date"></div>
+                    <div class="year"></div>
+                </div>
+                <div class="full_time"></div>
+            </div>
+        </section>
+        
+        <div class="search_container">
+            <input placeholder="Search" id="searchbox">
+            <button class="search_button"><i class="fas fa-search"></i></button>
         </div>
-    </section>
-
-    <div class="search_container">
-        <input placeholder="Search" id="searchbox">
-        <button class="search_button"><i class="fas fa-search"></i></button>
-    </div>
-
-    <section class="add_and_clear">
-        <form id="form">
-            <input placeholder="Ideas end up here.." id="new" type="text" autocomplete="off">
-            <button id="item_submit">Add</button>
-        </form>
-        <button class="clear_storage">Clear All</button>
-    </section>
-
-    <!-- <li class="list_items"><button class="delete">remove</button></li> -->
-            <!-- <li class="list_items">item 2<button class="delete">X</button></li>
+        
+        <section class="add_and_clear">
+            <form id="form">
+                <input placeholder="Ideas end up here.." id="new" type="text" autocomplete="off">
+                <button id="item_submit">Add</button>
+            </form>
+            <button class="clear_storage">Clear All</button>
+        </section>
+        
+        <!-- <li class="list_items"><button class="delete">remove</button></li> -->
+        <!-- <li class="list_items">item 2<button class="delete">X</button></li>
             <li class="list_items">item 3<button class="delete">X</button></li>
             <li class="list_items">item 4<button class="delete">X</button></li> -->
-    <section class="list_items_container">
-        <ul id="items" class="bg"></ul>
-    </section>
-
-    <section class="modal none">
-        <div class="modal-container">
-            <div class="modal-msg">Are you sure you want to delete this?</div>
-            <div class="yes-or-no">
-                <button class="yes">Yes</button>
-                <button class="no">No</button>
+        <section class="list_items_container">
+            <ul id="items" class="bg"></ul>
+        </section>
+        
+        <section class="modal none">
+            <div class="modal-container">
+                <div class="modal-msg">Are you sure you want to delete this?</div>
+                <div class="yes-or-no">
+                    <button class="yes">Yes</button>
+                    <button class="no">No</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <script src="./js/app.js"></script>
 </body>
 
